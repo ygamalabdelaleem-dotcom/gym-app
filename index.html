@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مدربك الشخصي</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>💪 مدربك الشخصي</h1>
+    <p>حديد · كارديو · جري</p>
+  </header>
+
+  <main>
+    <!-- البرنامج -->
+    <section id="plan" class="tab">
+      <form id="profile-form" class="card grid">
+        <h2>بياناتك</h2>
+        <label>السن<input name="age" type="number" min="14" max="80" required value="27"></label>
+        <label>الوزن (كجم)<input name="weight" type="number" min="35" max="250" required value="75"></label>
+        <label>الطول (سم)<input name="height" type="number" min="130" max="230" required value="175"></label>
+        <label>النوع
+          <select name="sex"><option value="m">ذكر</option><option value="f">أنثى</option></select>
+        </label>
+        <label>الهدف
+          <select name="goal">
+            <option value="fat_loss">خسارة دهون</option>
+            <option value="muscle">بناء عضل</option>
+            <option value="endurance">تحمّل وجري</option>
+            <option value="fitness">لياقة عامة</option>
+          </select>
+        </label>
+        <label>المستوى
+          <select name="level"><option value="0">مبتدئ</option><option value="1">متوسط</option><option value="2">متقدم</option></select>
+        </label>
+        <label>أيام التمرين
+          <select name="days"><option>3</option><option selected>4</option><option>5</option><option>6</option></select>
+        </label>
+        <label>المكان
+          <select name="place"><option value="gym">جيم</option><option value="home">بيت</option></select>
+        </label>
+        <label class="full">نبض الراحة (اختياري)<input name="rest" type="number" min="35" max="110" placeholder="مثلاً 65"></label>
+        <button class="full primary">اعمل البرنامج</button>
+      </form>
+      <div id="plan-output"></div>
+    </section>
+
+    <!-- التمارين -->
+    <section id="library" class="tab">
+      <div class="card">
+        <label>العضلة
+          <select id="lib-filter">
+            <option value="all">الكل</option>
+            <option value="chest">الصدر</option><option value="back">الظهر</option>
+            <option value="legs">الرجل</option><option value="shoulders">الكتف</option>
+            <option value="arms">الذراع</option><option value="core">البطن</option>
+          </select>
+        </label>
+      </div>
+      <div id="lib-output"></div>
+    </section>
+
+    <!-- الجري والكارديو -->
+    <section id="running" class="tab">
+      <div id="run-output"></div>
+    </section>
+
+    <!-- الأدوات -->
+    <section id="tools" class="tab">
+      <div class="card">
+        <h3>❤️ مناطق النبض</h3>
+        <div class="grid">
+          <label>السن<input id="hr-age" type="number"></label>
+          <label>نبض الراحة (اختياري)<input id="hr-rest" type="number"></label>
+        </div>
+        <div id="hr-output"></div>
+      </div>
+      <div class="card">
+        <h3>⏱️ حاسبة سرعة الجري</h3>
+        <div class="grid three">
+          <label>المسافة (كم)<input id="pace-km" type="number" step="0.1" placeholder="5"></label>
+          <label>دقايق<input id="pace-min" type="number" placeholder="30"></label>
+          <label>ثواني<input id="pace-sec" type="number" placeholder="0"></label>
+        </div>
+        <div id="pace-output"></div>
+      </div>
+    </section>
+
+    <!-- السجل -->
+    <section id="log" class="tab">
+      <div class="card" id="log-stats"></div>
+      <form id="log-form" class="card grid">
+        <h3>سجّل تمرين</h3>
+        <label>التاريخ<input name="date" type="date" required></label>
+        <label>النوع
+          <select name="type">
+            <option>حديد</option><option>جري</option><option>كارديو</option><option>HIIT</option><option>إطالات</option>
+          </select>
+        </label>
+        <label>المدة (د)<input name="min" type="number" min="0"></label>
+        <label>المسافة (كم)<input name="km" type="number" min="0" step="0.1"></label>
+        <label class="full">ملاحظات<input name="note" placeholder="مثلاً: سكوات 80 كجم × 8"></label>
+        <button class="full primary">حفظ</button>
+      </form>
+      <ul id="log-list" class="card log-list"></ul>
+    </section>
+
+    <!-- المدرب -->
+    <section id="coach" class="tab">
+      <div class="card">
+        <div id="chat"><div class="msg coach">أهلاً! أنا مدربك 💪 اسألني عن التمرين أو الجري أو الأكل.</div></div>
+        <div class="quick">
+          <button>إزاي أخسس الكرش؟</button><button>عاوز أبني عضل</button>
+          <button>إزاي أحسن الجري؟</button><button>الإحماء الصح</button>
+        </div>
+        <form id="chat-form"><input name="q" placeholder="اكتب سؤالك..."><button class="primary">إرسال</button></form>
+      </div>
+    </section>
+  </main>
+
+  <nav>
+    <button data-tab="plan">📋<span>البرنامج</span></button>
+    <button data-tab="library">🏋️<span>التمارين</span></button>
+    <button data-tab="running">🏃<span>الجري</span></button>
+    <button data-tab="tools">⏱️<span>أدوات</span></button>
+    <button data-tab="log">📒<span>السجل</span></button>
+    <button data-tab="coach">💬<span>المدرب</span></button>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
